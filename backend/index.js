@@ -3,9 +3,11 @@ import cors from "cors";
 
 const port = 3000;
 const app = express(); //express is a framework for building web applications
-app.use(cors()); //middleware to allow cross-origin requests
+app.use(cors({
+    origin: "http://localhost:5173", //request kewal issi origin se aayega
+})); //middleware to allow cross-origin requests
 
-app.use(express.json());
+app.use(express.json()); // server ko json data send karne ke liye use karna padta hai ye middleware hai
 
 app.get("/", (req, res) => {
     res.json({
@@ -15,6 +17,11 @@ app.get("/", (req, res) => {
             name: "Harsh",
         }
     });
+});
+
+app.post("/", (req, res) => {
+    console.log(req.body)
+    res.send({status: "success", message: "Data received successfully"});
 });
 
 app.listen(port, () => {
