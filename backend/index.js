@@ -1,9 +1,13 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-const port = 3000;
-const mongoURL = "mongodb+srv://abhaybdmu_db_user:Abhay2004@cluster0.hydovax.mongodb.net/mern_db";
+// Load environment variables
+dotenv.config();
+
+const port = process.env.PORT || 3000;
+const mongoURL = process.env.MONGODB_URI;
 const app = express(); //express is a framework for building web applications
 
 // Connect to MongoDB function
